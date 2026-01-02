@@ -20,6 +20,13 @@ password= (By.NAME,"password")
 submit_button=(By.XPATH,"//button[@id='js-login-btn']")
 error_message= (By.CSS_SELECTOR,"#js-notification-box-msg")
 
+#Remove them if you are not using them as of now
+
+free_trial=(By.XPATH,"//a[normalize-space()='Start a free Trial']")
+#forgot_password_button=(By.XPATH,"//button[normalize-space()='forgot Password']")
+# sso_login=(By.XPATH,"//button[normalize-space()='Sign in using SSO']")
+# remember_checkbox=(By.XPATH,"//label[@for='checkbox-remember']//span[@class=''
+
 #Page Actions
 
 def get_username(self):
@@ -31,8 +38,11 @@ def get_password(self):
 def get_submit_button(self):
     return self.driver.find_element(*LoginPage.submit_button)
 
+def get_free_trial_button(self):
+    return self.driver.find_element(*LoginPage.free_trial)
+
 def get_error_message(self):
-    webdriver_wait(driver=self.driver,element_tuple=error_message,timeout=5)
+    webdriver_wait(driver=self.driver,element_tuple=self.errormessage,timeout=5)
     return self.driver.find_element(*LoginPage.error_message)
 
 def login_to_vwo(self,usr,pwd):
@@ -42,6 +52,14 @@ def login_to_vwo(self,usr,pwd):
         self.get_submit_button().click()
     except Exception as e:
         print(e)
+
+
+    def free_trial_button_click(self):
+        try:
+            self.get_free_trial_button().click()
+
+        except Exception as e:
+            print(e)
 
 def get_error_message_text(self):
     return self.get_error_message().text

@@ -1,7 +1,7 @@
 from  selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from src.test.constants.constants import Constants
-from src.test.utils.common_utils import webdriver_wait
+
 #Method Overloading
 
 def webdriver_wait(driver,element_tuple):
