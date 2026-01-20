@@ -23,7 +23,7 @@ pip install pyyaml faker openpyxl
 pip install pytest-xdist
 pip install mysql-connector-python
 pip install pytest-reportportal
-pip install python-dotenv
+pip install python-dotenv(#store your credentials)
 
 
 # Python Selenium Web Automation Framework

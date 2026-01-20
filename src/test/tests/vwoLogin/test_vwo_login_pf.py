@@ -35,11 +35,11 @@ class TestVWOLogin:
     @pytest.mark.usefixtures("setup")
     @pytest.mark.qa
     def test_vwo_login_positive(self, setup):
-            driver = setup
-            driver.get(Constants.app_url())
-            loginPage = LoginPage(driver)
-            loginPage.login_to_vwo(usr=self.username, pwd=self.password)
-            dashboard_page = DashboardPage(driver)
-            username= dashboard_page.user_logged_in_text()
-            assert "Aman" == username
+        driver = setup
+        driver.get(Constants.app_url())
+        loginPage = LoginPage(driver)
+        loginPage.login_to_vwo(usr=self.username, pwd=self.password)
+        dashboard_page = DashboardPage(driver)
+        username= dashboard_page.user_logged_in_text()
+        assert "Aman" == username
 

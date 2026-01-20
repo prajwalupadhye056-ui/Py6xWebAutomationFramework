@@ -17,7 +17,8 @@ from dotenv import load_dotenv
 import os
 from src.test.utils.Utils import *
 
-@pytest.fixture()
+
+
 def setup():
     load_dotenv()
     driver = webdriver.Chrome()
