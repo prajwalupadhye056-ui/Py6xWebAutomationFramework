@@ -10,7 +10,6 @@ import os
 from src.test.utils.Utils import *
 
 
-
 @allure.title("VWO Login Negative TestCase")
 @allure.description("TC#1- Negative TC -VWO Login with invalid credentials")
 @allure.feature("VWO login with invalid credentials")
@@ -19,15 +18,15 @@ from src.test.utils.Utils import *
 def test_app_vwo_login_chrome():
     load_dotenv()
     match os.getenv("BROWSER"):
-       case "chrome":
+       case "Chrome":
          chrome_options= Options()
          chrome_options.add_argument("--incognito")
-         driver= webdriver.Chrome(chrome_options)
+         driver= webdriver.Chrome(options=chrome_options)
 
        case "Edge":
          edge_options = Options()
          edge_options.add_argument("--incognito")
-         driver = webdriver.Edge(edge_options)
+         driver = webdriver.Edge(options=edge_options)
 
        case "Firefox":
          firefox_options = Options()
@@ -36,22 +35,24 @@ def test_app_vwo_login_chrome():
 
        case _:
           print("Browser!!! not found")
-          exit(1)
+
 
     driver.get(os.getenv("URL"))
 
-    take_screen_shot(driver=driver, name="vwoLogin_Step1")
+    take_screen_shot(driver=driver, name="vwo_Login_step1")
     email_web_element= driver.find_element(By.ID,"login-username")
     email_web_element.send_keys(os.getenv("INVALID_USERNAME"))
 
-    password_web_element = driver.find_element(By.ID, "password")
+    password_web_element = driver.find_element(By.NAME, "password")
     password_web_element.send_keys(os.getenv("INVALID_PASSWORD"))
 
     submit_btn_web_element = driver.find_element(By.ID, "js-login-btn")
     submit_btn_web_element.click()
 
+    time.sleep(3)
+
     take_screen_shot(driver=driver, name="vwoLogin_Step2")
-    error_message_web_element=driver.find_element(By.CLASS_NAME,"notification")
+    error_message_web_element=driver.find_element(By.CLASS_NAME,"notification-box-description")
     print(error_message_web_element.text)
 
     take_screen_shot(driver=driver,name="vwoLogin_Step3")
