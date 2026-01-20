@@ -219,7 +219,7 @@ If you find this framework useful, don’t forget to ⭐ the repository.
 #first install all the dependencies
 
 #freeze the pip (Latest version)
-pip freeze > requirements.txt
+pip freeze > requirement.txt
 
 
 pip install -r requirement.txt
