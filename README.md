@@ -215,4 +215,14 @@ Contributions, issues, and feature requests are welcome!
 If you find this framework useful, don’t forget to ⭐ the repository.
 
 
+#How to freeze the pip?
+#first install all the dependencies
+
+#freeze the pip (Latest version)
+pip freeze > requirements.txt
+
+
+pip install -r requirement.txt
+
+
 
